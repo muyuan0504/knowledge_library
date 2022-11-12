@@ -4,11 +4,92 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>前端路由实现</title>
+        <style>
+            .router-content {
+                width: 50vw;
+                height: 75vh;
+                color: white;
+            }
+            a {
+                color: black;
+                padding: 4px;
+                line-height: 32px;
+            }
+            .blue-box {
+                background: blue;
+            }
+            .orange-box {
+                background: orange;
+            }
+            .grey-box {
+                background: grey;
+            }
+            .flex-box {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .disappear-el {
+                display: none;
+            }
+        </style>
     </head>
     <body>
+        <div id="app">
+            <ul>
+                <li><a href="#orange">前往orange</a></li>
+                <li><a href="#grey">前往grey</a></li>
+                <li><a href="#blue">前往blue</a></li>
+            </ul>
+            <div id="blue" class="router-content blue-box flex-box">Blue</div>
+            <div id="orange" class="router-content orange-box flex-box">Orange</div>
+            <div id="grey" class="router-content grey-box flex-box">Grey</div>
+        </div>
         <script>
-            console.log(11);
+            /** hash模式 */
+            console.log(location.hash);
+            document.getElementById('blue').classList.add('disappear-el');
+
+            console.log(document.getElementById('blue').classList.contains('disappear-el'));
+            document.getElementById('blue').classList.remove('disappear-el');
+            console.log(document.getElementById('blue').classList.contains('disappear-el'));
+
+            class RouterMap {
+                // 初始化路由配置
+                constructor(options) {
+                    const routes = options.router;
+                    this.initEventListen();
+                }
+                // 初始化事件监听
+                initEventListen() {}
+                // 提供push跳转方法
+                push(url) {}
+            }
+
+            const router = [
+                {
+                    path: 'blue',
+                    name: 'pathBlue',
+                    components: '这里是blue路由~',
+                },
+                {
+                    path: 'orange',
+                    name: 'pathOrange',
+                    components: '这里是orange路由~',
+                },
+                {
+                    path: 'grey',
+                    name: 'pathGrey',
+                    components: '这里是grey路由~',
+                },
+            ];
+
+            new RouterMap({
+                router,
+            });
+
+            /** history模式 */
         </script>
     </body>
 </html>
