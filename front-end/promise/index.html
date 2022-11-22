@@ -7,7 +7,23 @@
         <title>Promise</title>
     </head>
     <body>
-        <script src="./my-promise.js"></script>
+        <!-- <script src="./my-promise.js"></script> -->
         <!-- <script src="./promise-self.js"></script> -->
+        <script>
+            new Promise((resolve, reject) => {
+                resolve(1);
+            })
+                .then((res) => {
+                    console.log(res, '.then===');
+                    return Promise.reject(2);
+                })
+                .then(null, (err) => {
+                    console.log(err, 'err---');
+                    return Promise.resolve(3);
+                })
+                .then((res) => {
+                    console.log(res, '.then-----');
+                });
+        </script>
     </body>
 </html>
