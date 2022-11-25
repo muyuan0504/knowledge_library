@@ -16,6 +16,9 @@
                 padding: 4px;
                 line-height: 32px;
             }
+            li {
+                cursor: pointer;
+            }
             .blue-box {
                 background: blue;
             }
@@ -38,58 +41,25 @@
     <body>
         <div id="app">
             <ul>
-                <li><a href="#orange">前往orange</a></li>
+                <!-- <li><a href="#orange">前往orange</a></li>
                 <li><a href="#grey">前往grey</a></li>
-                <li><a href="#blue">前往blue</a></li>
+                <li><a href="#blue">前往blue</a></li> -->
+                <li>前往orange</li>
+                <li>前往grey</li>
+                <li>前往blue</li>
             </ul>
             <div id="blue" class="router-content blue-box flex-box">Blue</div>
             <div id="orange" class="router-content orange-box flex-box">Orange</div>
             <div id="grey" class="router-content grey-box flex-box">Grey</div>
         </div>
         <script>
-            /** hash模式 */
             console.log(location.hash);
             document.getElementById('blue').classList.add('disappear-el');
 
             console.log(document.getElementById('blue').classList.contains('disappear-el'));
             document.getElementById('blue').classList.remove('disappear-el');
             console.log(document.getElementById('blue').classList.contains('disappear-el'));
-
-            class RouterMap {
-                // 初始化路由配置
-                constructor(options) {
-                    const routes = options.router;
-                    this.initEventListen();
-                }
-                // 初始化事件监听
-                initEventListen() {}
-                // 提供push跳转方法
-                push(url) {}
-            }
-
-            const router = [
-                {
-                    path: 'blue',
-                    name: 'pathBlue',
-                    components: '这里是blue路由~',
-                },
-                {
-                    path: 'orange',
-                    name: 'pathOrange',
-                    components: '这里是orange路由~',
-                },
-                {
-                    path: 'grey',
-                    name: 'pathGrey',
-                    components: '这里是grey路由~',
-                },
-            ];
-
-            new RouterMap({
-                router,
-            });
-
-            /** history模式 */
         </script>
+        <script src="./route-hash.js"></script>
     </body>
 </html>
