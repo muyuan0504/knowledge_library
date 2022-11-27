@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>前端路由</title>
+    </head>
+    <body>
+        <div id="apps">
+            <span>点击跳转路由A</span>
+            <span>点击跳转路由B</span>
+            <div id="routerView"></div>
+        </div>
+        <script>
+            const routeList = [
+                {
+                    path: '#/routerA',
+                    name: 'routerA',
+                    component: '这个是路由A',
+                },
+                {
+                    path: '#/routerB',
+                    name: 'routerB',
+                    component: '这个是路由B',
+                },
+            ]
+            window.addEventListener('hashchange', (hash) => {
+                const curHash = hash.target.location.hash
+                const curPage = routeList.find((item) => item.path === curHash)
+                document.getElementById('routerView').innerHTML = curPage.component
+            })
+            const spanList = document.querySelectorAll('span')
+            for (let i = 0; i < spanList.length; i++) {
+                spanList[i].addEventListener(
+                    'click',
+                    () => {
+                        console.log(routeList[i])
+                        location.replace(routeList[i].path)
+                    },
+                    false
+                )
+            }
+        </script>
+    </body>
+</html>
+
+
